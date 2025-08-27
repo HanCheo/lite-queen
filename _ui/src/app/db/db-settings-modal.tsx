@@ -19,10 +19,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import {
-	deleteDatabase,
-	updateDatabaseSettings,
-	useGetDatabaseInfo,
-	useGetLoadedDatabases,
+        deleteDatabase,
+        updateDatabaseSettings,
+        useGetLoadedDatabases,
 } from "@/lib/data";
 import { Trash2Icon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -33,7 +32,7 @@ export function DbSettingsModal({ children, db_id }) {
 
 	const [currentDbInfo, setCurrentDbInfo] = React.useState();
 
-	const [open, setOpen] = useState();
+        const [open, setOpen] = useState(false);
 
 	const { toast } = useToast();
 	const { mutate } = useSWRConfig();
