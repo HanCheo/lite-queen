@@ -53,7 +53,7 @@ const multiSelectVariants = cva(
 	},
 );
 
-export const MultiSelect = React.forwardRef(
+export const MultiSelect = React.forwardRef<any, any>(
 	(
 		{
 			options,
