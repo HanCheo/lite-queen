@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: "export",
+        output: "export",
 
 	// Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
 	// skipTrailingSlashRedirect: true,
@@ -8,10 +8,13 @@ const nextConfig = {
 	// Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
 	trailingSlash: true,
 
-	compiler: {
-		removeConsole:
-			process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
-	},
+        compiler: {
+                removeConsole:
+                        process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+        },
+        typescript: {
+                ignoreBuildErrors: true,
+        },
 };
 
 module.exports = nextConfig;

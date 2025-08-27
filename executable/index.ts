@@ -1,11 +1,19 @@
 import { Database } from "bun:sqlite";
-import staticFiles from "./static-ui-bundle.js";
 import { parseArgs } from "node:util";
 import { randomUUID } from "node:crypto";
 import { $ } from "bun";
 import { mkdir } from "node:fs/promises";
 
 const IS_DEV_MODE = process.env.IS_DEV === "true";
+
+let staticFiles: Record<string, any> = {};
+try {
+        staticFiles = (await import("./static-ui-bundle.js")).default;
+} catch {
+        console.warn(
+                "static-ui-bundle.js not found. Run `npm --prefix _ui run build && npm --prefix _ui run generate-static-bundle` and copy the file into the executable directory to serve the UI.",
+        );
+}
 
 type ShortTermMemoryDatabase = {
 	db_id: string;
